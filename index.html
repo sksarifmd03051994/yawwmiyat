@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#174f43"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icon-192.png"><title>يَوْمِيَّات — رضائے الٰہی فلاحِ آخرت</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#174f43;--pale:#e4efeb;--ink:#24332e;--muted:#71817b;--line:#dce5e1;--bg:#f4f7f5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Hind Siliguri',sans-serif}
+header{background:var(--green);color:white;padding:18px 16px 14px;text-align:center}header h1{font-size:22px;margin:0;font-weight:600}header p{margin:2px 0 0;font-size:13px;opacity:.85}
+main{max-width:850px;margin:auto;padding:14px}.top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:white;padding:12px;border-radius:14px;box-shadow:0 2px 10px #173b3010}
+input,button,textarea{font:inherit}input[type=date],input[type=number],input[type=text],textarea{border:1px solid var(--line);border-radius:9px;padding:9px;background:white;color:var(--ink)}button{border:0;border-radius:9px;padding:10px 14px;background:var(--green);color:white;font-weight:600;cursor:pointer}.secondary{background:#e8f0ed;color:var(--green)}.tabs{display:flex;gap:7px;margin:12px 0;flex-wrap:wrap}.tabs button{flex:1;min-width:90px}.tabs button.active{background:#cfe2da;color:#123f34;outline:1px solid #9dbdaf}
+.panel{background:white;border-radius:14px;padding:14px;margin:10px 0;box-shadow:0 2px 10px #173b3009}.panel h2{font-size:18px;margin:0 0 9px;color:var(--green)}.panel h3{font-size:15px;margin:14px 0 7px;background:var(--pale);padding:7px 10px;border-radius:7px;color:#24584c}
+.task{display:flex;align-items:center;gap:10px;padding:8px 5px;border-bottom:1px solid #edf1ef;min-height:42px}.task:last-child{border:0}.task label{flex:1;font-size:14px;line-height:1.35}.task input[type=checkbox]{appearance:none;width:22px;height:22px;border:1.5px solid #9aaba4;border-radius:5px;flex:none;cursor:pointer}.task input[type=checkbox]:checked{background:var(--green);border-color:var(--green);position:relative}.task input[type=checkbox]:checked:after{content:'✓';color:white;position:absolute;inset:-1px 0 0;text-align:center;font-size:16px}
+.fieldgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:9px}.fieldgrid label{font-size:13px;color:var(--muted);display:grid;gap:4px}.fieldgrid input{width:100%}textarea{width:100%;min-height:86px;resize:vertical}.hint{font-size:12px;color:var(--muted)}.hidden{display:none!important}
+#lock{position:fixed;inset:0;background:#102e27;z-index:10;display:grid;place-items:center;padding:20px}#lock .lockbox{background:white;border-radius:18px;padding:24px;width:min(340px,100%);text-align:center}#lock h2{color:var(--green)}#pin{font-size:24px;letter-spacing:9px;text-align:center;width:100%;margin:10px 0}#pinmsg{color:#b33;font-size:13px;min-height:20px}
+@media print{body{background:white}header{background:white;color:#174f43;padding:4px}header h1{font-size:18px}.top,.tabs,.no-print,.hint{display:none!important}main{max-width:none;padding:0}.panel{box-shadow:none;border-radius:0;padding:4px;margin:0;break-inside:avoid}.panel h2{font-size:14px}.panel h3{font-size:10px;padding:3px;margin:4px 0}.task{min-height:0;padding:2px 3px;gap:4px}.task label{font-size:8px}.task input[type=checkbox]{width:9px;height:9px;border-radius:0}.task input[type=checkbox]:checked{print-color-adjust:exact;-webkit-print-color-adjust:exact;background:#174f43}.print-sheet{break-after:page}.print-sheet:last-child{break-after:auto}.print-title{text-align:center;color:#174f43;font-size:17px;margin:0}.print-sub{text-align:center;font-size:9px;color:#667;margin:0 0 5px}.matrix{width:100%;border-collapse:collapse;font-size:7px;table-layout:fixed}.matrix th{background:#174f43;color:white;font-weight:400;print-color-adjust:exact;-webkit-print-color-adjust:exact}.matrix th:first-child,.matrix td:first-child{width:30%;text-align:left}.matrix th,.matrix td{border:1px solid #dce5e1;padding:2px;text-align:center;overflow:hidden}.matrix .section td{background:#e4efeb;font-weight:bold;text-align:left;print-color-adjust:exact;-webkit-print-color-adjust:exact}.filled{background:#174f43!important;color:white;print-color-adjust:exact;-webkit-print-color-adjust:exact}.summarytable{width:100%;border-collapse:collapse;font-size:9px}.summarytable td,.summarytable th{border:1px solid #ddd;padding:4px;text-align:left}}
+</style></head>
+<body>
+<div id="lock"><div class="lockbox"><h2>رضائے الٰہی فلاحِ آخرت</h2><p id="lockintro">আপনার ৪ ডিজিটের PIN তৈরি করুন</p><input id="pin" type="password" inputmode="numeric" maxlength="4" placeholder="••••"><button id="unlock">চালু করুন</button><div id="pinmsg"></div><p class="hint">PIN ও তথ্য এই ডিভাইসের ব্রাউজারে সংরক্ষিত থাকবে।</p></div></div>
+<header><h1>يَوْمِيَّات</h1><p>رضائے الٰہی فلاحِ آخرت · দৈনিক আমল চেকলিস্ট</p></header>
+<main>
+<div class="top no-print"><strong>তারিখ:</strong><input type="date" id="date"><button id="today" class="secondary">আজ</button><button id="pdf">মাসিক PDF ডাউনলোড</button></div>
+<div class="tabs no-print"><button data-tab="daily" class="active">দৈনিক</button><button data-tab="weekly">সাপ্তাহিক</button><button data-tab="monthly">মাসিক</button></div>
+<div id="daily" class="view"></div><div id="weekly" class="view hidden"></div><div id="monthly" class="view hidden"></div>
+<div class="panel no-print"><p class="hint">এই অ্যাপটি অফলাইনে একই ডিভাইসের ব্রাউজারে তথ্য রাখে। ব্রাউজারের ডেটা মুছে ফেললে তথ্য হারাতে পারে—নিয়মিত মাসিক PDF সংরক্ষণ করুন।</p></div>
+</main>
+<script>
+const groups={
+daily:{
+'সালাত':['ফজর','জোহর','আসর','মাগরিব','ইশা','ইশরাক','চাশত','তাহাজ্জুদ','ফরজ সালাত ১৭ রাকাত','ওয়াজিব সালাত ৩ রাকাত','সুন্নাতে মুয়াক্কাদাহ সালাত ১২ রাকাত','সুন্নাতে গায়রে মুয়াক্কাদাহ সালাত ১২ রাকাত','নফল সালাত'],
+'জিকির ও ওয়াজিফা':['সকালের আমল','সন্ধ্যার আমল','রাতের আমল','সূরা ফাতিহা','আয়াতুল কুরসী','দরুদ শরীফ','তাসবিহে ফাতেমি','আসমাউল হুসনা','সায়্যিদুল ইস্তিগফার','কলেমা পাঠ','যিকর','দুয়া','৪ কুলহু','সূরা হাশর শেষ ৩ আয়াত','সূরা বাকারা শেষ রুকু','সূরা মুলক','প্রত্যেক রাতে সমস্ত মানুষকে মাফ','এহতেশাব','একটা সদ্গুণ অর্জন','একটা বদ গুণ বর্জন','দৈনিক মাসনুন দুয়া','জিকির','সুন্নত চর্চা'],
+'দ্বীনের ও সংগঠনের বুনিয়াদি কাজ':['দাওয়াহ্','ইসলাহ্','খেদমতে খালক্','তারবিয়াহ্'],
+'ইসলামী জ্ঞানচর্চা':['তেলাওয়াত এ কুরআন','তর্জমা','তাফসীর','হাদীস','নবী জীবনী','সাহাবী জীবনী','ইসলামী সাহিত্য','ইসলামী ভিডিও','ইসলামী কোর্স','মিজান পত্রিকা'],
+'একাডেমিক জ্ঞানচর্চা':['কারেন্ট অ্যাফেয়ার্স','ডেইলি নিউজ','টেলিগ্রাম প্রশ্নোত্তর','অ্যাকাডেমিক শিক্ষা'],
+'সিলাতুর রাহিম':['মানুষের সঙ্গে সুসম্পর্ক','মানুষের উপর সন্তোষজনক আচরণ','ফোন কন্টাক্ট'],
+'আচরণ':['ক্রোধ নিয়ন্ত্রণ','সমালোচনার সীমা রক্ষা','হক কথা','সবাইকে ভালোবাসার ক্ষেত্রে আন্তরিক','নিজের থেকে অন্যকে অগ্রাধিকার','গীবত ও পরচর্চা থেকে দূরে','নিজের দুর্বলতা ও ভুল সংশোধনে আন্তরিক'],
+'আয় ব্যয়':['উপার্জন একশো ভাগ জায়েজ','সন্দেহযুক্ত অর্থ রোজগারের মিশ্রিত না হওয়া','লেনদেন স্বচ্ছতা'],
+'নোট':['ডায়েরি লেখা ও ভাষা চর্চা','ব্যক্তিগত রিপোর্ট ফর্ম পূরণ']
+},
+weekly:{'সাপ্তাহিক আমল':['জুম্মার নামাজ','জুম্মার আমল','নতুন দারস-এ-কুরআন প্রস্তুত','সাপ্তাহিক মসজিদে ইজতেমা','সাপ্তাহিক পারিবারিক ইজতেমা','রিডিং উইথ আশিয়া','হেফজ নাজেরাহ্','কুরআনের শব্দার্থ ও গবেষণা','হেলথ ও পারিপার্শ্বিক পরিচ্ছন্নতা','কনটেন্ট ক্রিয়েট','আর্ট','লেখালিখি','কালেকশান অফ থটস সম্পূর্ণ পড়া','ভ্রমণ']},
+monthly:{'মাসিক আমল':['জামাআতে ইসলামী হিন্দ রিপোর্ট ফর্ম ও অ্যাপ পূরণ','ইয়ানত ২%','ইনফাক','সদকাহ','মুদি খানা','ইন্টারেস্ট বহিষ্কার','মসজিদে ব্যয়','আরবী টিউশন খরচ','মিজান পেপার দাম','ফোন রিচার্জ','প্রিয়জনদের হাতখরচ','সেভিং ১-১০','এ মাসে পুস্তক পর্যালোচনা প্রোগ্রামে অংশ']}
+};
+const $=s=>document.querySelector(s), today=new Date(), dateEl=$('#date');
+const iso=d=>{let x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`};
+dateEl.value=iso(today);
+let current=iso(today), active='daily';
+const key=d=>'yawmiyat:'+d;
+function read(d){try{return JSON.parse(localStorage.getItem(key(d))||'{}')}catch{return {}}}
+function write(d,obj){localStorage.setItem(key(d),JSON.stringify(obj))}
+function checked(d,period,group,item){return !!(read(d)[period]?.[group]?.[item])}
+function setcheck(d,period,g,item,v){let o=read(d);o[period]??={};o[period][g]??={};o[period][g][item]=v;write(d,o)}
+function render(){
+ current=dateEl.value||iso(today); const data=read(current);
+ $('#daily').innerHTML=Object.entries(groups.daily).map(([g,items])=>`<section class="panel"><h3>${g}</h3>${items.map((it,i)=>`<div class="task"><label for="d${Object.keys(groups.daily).indexOf(g)}_${i}">${it}</label><input type="checkbox" id="d${Object.keys(groups.daily).indexOf(g)}_${i}" data-p="daily" data-g="${g}" data-i="${it}" ${checked(current,'daily',g,it)?'checked':''}></div>`).join('')}${g==='সালাত'?`<div class="fieldgrid" style="padding:10px 4px"><label>জামাতে সালাত সংখ্যা<input type="number" min="0" id="jamaat" value="${data.jamaat??''}" placeholder="সংখ্যা"></label><label>একাকী সালাত সংখ্যা<input type="number" min="0" id="alone" value="${data.alone??''}" placeholder="সংখ্যা"></label></div>`:''}${g==='আয় ব্যয়'?`<div class="fieldgrid" style="padding:10px 4px"><label>আয় (₹)<input type="number" min="0" id="income" value="${data.income??''}" placeholder="টাকার পরিমাণ"></label><label>ব্যয় (₹)<input type="number" min="0" id="expense" value="${data.expense??''}" placeholder="টাকার পরিমাণ"></label></div>`:''}</section>`).join('')+`
+<section class="panel"><h2>আজকের গুরুত্বপূর্ণ ঘটনা</h2><textarea id="note" placeholder="আজকের গুরুত্বপূর্ণ ঘটনা লিখুন...">${data.note??''}</textarea></section>`;
+ ['weekly','monthly'].forEach(p=>{$('#'+p).innerHTML=Object.entries(groups[p]).map(([g,items])=>`<section class="panel"><h2>${g}</h2>${items.map((it,i)=>`<div class="task"><label for="${p}${i}">${it}</label><input type="checkbox" id="${p}${i}" data-p="${p}" data-g="${g}" data-i="${it}" ${checked(current,p,g,it)?'checked':''}></div>`).join('')}</section>`).join('')});
+ document.querySelectorAll('input[type=checkbox][data-p]').forEach(el=>el.addEventListener('change',()=>setcheck(current,el.dataset.p,el.dataset.g,el.dataset.i,el.checked)));
+ ['income','expense','jamaat','alone','note'].forEach(id=>$('#'+id).addEventListener('change',()=>{let o=read(current);o[id]=$('#'+id).value;write(current,o)}));
+}
+dateEl.addEventListener('change',render);$('#today').onclick=()=>{dateEl.value=iso(today);render()};
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{active=b.dataset.tab;document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('hidden',x.id!==active))});
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function monthPDF(){
+ const [y,m]=current.split('-').map(Number), days=new Date(y,m,0).getDate(), monthKey=`${y}-${String(m).padStart(2,'0')}`;
+ const all=Array.from({length:days},(_,i)=>iso(new Date(y,m-1,i+1)));
+ let htmlOut=`<section class="print-sheet"><h1 class="print-title">رضائے الٰہی فلاحِ آخرت</h1><p class="print-sub">দৈনিক আমল চেকলিস্ট — ${monthKey} | পৃষ্ঠা ১–২</p>`;
+ const dailyGroups=Object.entries(groups.daily);
+ // split daily groups across two pages, matching the uploaded reference's two-page daily matrix
+ [dailyGroups.slice(0,2),dailyGroups.slice(2)].forEach((subset,idx)=>{
+ if(idx) htmlOut+=`</section><section class="print-sheet"><h1 class="print-title">رضائے الٰہی فلاحِ آخرت</h1><p class="print-sub">দৈনিক আমল চেকলিস্ট — ${monthKey} | পৃষ্ঠা ২</p>`;
+ htmlOut+=`<table class="matrix"><thead><tr><th>কাজের তালিকা</th>${all.map((_,i)=>`<th>${i+1}</th>`).join('')}</tr></thead><tbody>`;
+ subset.forEach(([g,items])=>{htmlOut+=`<tr class="section"><td colspan="${days+1}">${esc(g)}</td></tr>`;items.forEach(it=>{htmlOut+=`<tr><td>${esc(it)}</td>${all.map(d=>`<td class="${checked(d,'daily',g,it)?'filled':''}">${checked(d,'daily',g,it)?'✓':''}</td>`).join('')}</tr>`});if(g==='সালাত'){['jamaat','alone'].forEach((id,i)=>htmlOut+=`<tr><td>${i?'একাকী সালাত সংখ্যা':'জামাতে সালাত সংখ্যা'}</td>${all.map(d=>`<td>${esc(read(d)[id]||'')}</td>`).join('')}</tr>`)}if(g==='আয় ব্যয়'){['income','expense'].forEach((id,i)=>htmlOut+=`<tr><td>${i?'ব্যয় (₹)':'আয় (₹)'}</td>${all.map(d=>`<td>${esc(read(d)[id]||'')}</td>`).join('')}</tr>`)}});
+ htmlOut+='</tbody></table>';
+ });
+ htmlOut+='</section>';
+ htmlOut+=`<section class="print-sheet"><h1 class="print-title">رضائے الٰہی فلاحِ آخرت</h1><p class="print-sub">সাপ্তাহিক ও মাসিক আমল চেকলিস্ট — ${monthKey}</p><h3>সাপ্তাহিক কাজের তালিকা — ${Math.ceil(days/7)} সপ্তাহ</h3><table class="matrix"><tr><th>কাজের তালিকা</th>${Array.from({length:Math.ceil(days/7)},(_,i)=>`<th>${i+1}</th>`).join('')}</tr>`;
+ Object.entries(groups.weekly).forEach(([g,items])=>{items.forEach(it=>{htmlOut+=`<tr><td>${esc(it)}</td>${Array.from({length:Math.ceil(days/7)},(_,i)=>{let weekDays=all.slice(i*7,Math.min((i+1)*7,days));let done=weekDays.some(d=>checked(d,'weekly',g,it));return `<td class="${done?'filled':''}">${done?'✓':''}</td>`}).join('')}</tr>`})});
+ htmlOut+=`</table><h3>মাসিক কাজের তালিকা</h3><table class="matrix"><tr><th>কাজের তালিকা</th><th>সম্পন্ন</th></tr>`;
+ Object.entries(groups.monthly).forEach(([g,items])=>items.forEach(it=>{let done=all.some(d=>checked(d,'monthly',g,it));htmlOut+=`<tr><td>${esc(it)}</td><td class="${done?'filled':''}">${done?'✓':''}</td></tr>`}));
+ htmlOut+=`</table><h3>আয়-ব্যয় ও গুরুত্বপূর্ণ ঘটনা</h3><table class="summarytable"><tr><th>তারিখ</th><th>আয় (₹)</th><th>ব্যয় (₹)</th><th>জামাতে</th><th>একাকী</th></tr>`;
+ all.forEach(d=>{let o=read(d);if(o.income||o.expense||o.jamaat||o.alone)htmlOut+=`<tr><td>${d}</td><td>${esc(o.income||'')}</td><td>${esc(o.expense||'')}</td><td>${esc(o.jamaat||'')}</td><td>${esc(o.alone||'')}</td></tr>`});
+ htmlOut+=`</table><h3>আজকের গুরুত্বপূর্ণ ঘটনা</h3><table class="summarytable">`;
+ all.forEach(d=>{let n=read(d).note;if(n)htmlOut+=`<tr><td style="width:18%">${d}</td><td>${esc(n).replace(/\n/g,'<br>')}</td></tr>`});
+ htmlOut+=`</table></section>`;
+ let w=window.open('','_blank');w.document.write(`<!doctype html><html lang="bn"><head><meta charset="utf-8"><title>Yawmiyat ${monthKey}</title><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet"><style>${document.querySelector('style').innerHTML}</style></head><body>${htmlOut}<script>window.onload=()=>setTimeout(()=>window.print(),500)<\/script></body></html>`);w.document.close();
+}
+$('#pdf').onclick=monthPDF;
+const pinEl=$('#pin'), stored=localStorage.getItem('yawmiyat-pin');$('#lockintro').textContent=stored?'৪ ডিজিটের PIN দিন':'আপনার ৪ ডিজিটের PIN তৈরি করুন';
+$('#unlock').onclick=()=>{let p=pinEl.value;if(!/^\d{4}$/.test(p)){$('#pinmsg').textContent='৪টি সংখ্যা লিখুন';return}if(stored){if(p!==stored){$('#pinmsg').textContent='PIN সঠিক নয়';return}}else localStorage.setItem('yawmiyat-pin',p);$('#lock').classList.add('hidden')};
+pinEl.addEventListener('keydown',e=>{if(e.key==='Enter')$('#unlock').click()});
+render();
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) { window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(console.error)); }
+</script></body></html>
