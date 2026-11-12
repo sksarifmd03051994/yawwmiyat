@@ -79,8 +79,6 @@ function monthPDF(){
  Object.entries(groups.weekly).forEach(([g,items])=>{items.forEach(it=>{htmlOut+=`<tr><td>${esc(it)}</td>${Array.from({length:Math.ceil(days/7)},(_,i)=>{let weekDays=all.slice(i*7,Math.min((i+1)*7,days));let done=weekDays.some(d=>checked(d,'weekly',g,it));return `<td class="${done?'filled':''}">${done?'✓':''}</td>`}).join('')}</tr>`})});
  htmlOut+=`</table><h3>মাসিক কাজের তালিকা</h3><table class="matrix"><tr><th>কাজের তালিকা</th><th>সম্পন্ন</th></tr>`;
  Object.entries(groups.monthly).forEach(([g,items])=>items.forEach(it=>{let done=all.some(d=>checked(d,'monthly',g,it));htmlOut+=`<tr><td>${esc(it)}</td><td class="${done?'filled':''}">${done?'✓':''}</td></tr>`}));
- htmlOut+=`</table><h3>আয়-ব্যয় ও গুরুত্বপূর্ণ ঘটনা</h3><table class="summarytable"><tr><th>তারিখ</th><th>আয় (₹)</th><th>ব্যয় (₹)</th><th>জামাতে</th><th>একাকী</th></tr>`;
- all.forEach(d=>{let o=read(d);if(o.income||o.expense||o.jamaat||o.alone)htmlOut+=`<tr><td>${d}</td><td>${esc(o.income||'')}</td><td>${esc(o.expense||'')}</td><td>${esc(o.jamaat||'')}</td><td>${esc(o.alone||'')}</td></tr>`});
  htmlOut+=`</table><h3>আজকের গুরুত্বপূর্ণ ঘটনা</h3><table class="summarytable">`;
  all.forEach(d=>{let n=read(d).note;if(n)htmlOut+=`<tr><td style="width:18%">${d}</td><td>${esc(n).replace(/\n/g,'<br>')}</td></tr>`});
  htmlOut+=`</table></section>`;
